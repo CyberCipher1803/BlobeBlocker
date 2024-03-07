@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NasaBlocker</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Varela+Round:wght@400&display=swap');
+
+    input#url, button.redirect-button {
+      margin: 0 auto;
+      display: block;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Varela Round', sans-serif;
+      font-size: 50px;
+      border-radius: 20px;
+    }
+
+    input#url {
+      width: 500px;
+      height: 150px;
+      margin-left: -170px;
+      background-color: black;
+      color: white;
+      outline: 10px solid white;
+    }
+
+    body {
+      background-color: black;
+    }
+
+    button.redirect-button {
+      background-color: green;
+      border: none;
+      color: white;
+      padding: 10px;
+      width: 300px;
+      height: 150px;
+      margin-left: 270px;
+      outline: 10px solid darkgreen;
+    }
+
+    button.redirect-button:hover {
+      filter: saturate(4);
+    }
+
+    .text {
+      position: absolute;
+      top: 150px;
+      right: 25%;
+      font-family: 'Varela Round', sans-serif;
+      font-size: 100px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .new-image {
+      position: absolute;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+    }
+
+    iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .image {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div class="image"></div>
+  <div class="text">BlobeBlocker</div>
+  <input type="text" id="url" placeholder="Enter URL here">
+  <button class="redirect-button" onclick="iframe()">Load Page</button>
+
+  <script>
+     function iframe() {
+      // Get the URL from the text box.
+      var url = document.getElementById('url').value;
+
+      // If the URL does not start with "https://" or "http://", prepend "https://" to it.
+      if (url.indexOf('https://') !== 0 && url.indexOf('http://') !== 0) {
+        url = 'https://' + url;
+      }
+
+      // Create an image element.
+      var image = document.createElement('img');
+
+      // Set the image's src attribute to the URL.
+      image.src = 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif';
+
+      // Append the image to the body of the document.
+      document.body.appendChild(image);
+
+      // Create an iframe element.
+      var iframe = document.createElement('iframe');
+
+      // Set the iframe's src attribute to the URL.
+      iframe.src = 'https://tool.geometrytip.site/launch.html?domain=' + url;
+
+      // Append the iframe to the body of the document.
+      document.body.appendChild(iframe);
+    }
+  </script>
+</body>
+</html>
